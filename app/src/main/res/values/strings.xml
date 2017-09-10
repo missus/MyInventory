@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">My Inventory</string>
+
+    <string name="catalog_no_stock">Currently not available</string>
+
+    <string name="action_delete_all_entries">Delete All Products</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+
+    <string name="editor_select_picture">Select Picture</string>
+
+    <string name="category_name">Name</string>
+    <string name="category_brand">Brand</string>
+    <string name="category_supplier">Supplier</string>
+    <string name="category_email">E-mail</string>
+    <string name="category_quantity">Quantity</string>
+    <string name="category_price">Price</string>
+    <string name="category_description">Description</string>
+
+    <string name="hint_product_name">Name</string>
+    <string name="hint_product_brand">Brand</string>
+    <string name="hint_product_supplier">Supplier</string>
+    <string name="hint_product_email">E-mail</string>
+    <string name="hint_product_quantity">Quantity</string>
+    <string name="hint_product_price">Price</string>
+    <string name="hint_product_description">Description</string>
+
+    <string name="unit_product_price">$</string>
+
+    <string name="editor_order">Order</string>
+    <string name="order_greeting">Dear <xliff:g id="supplier" example="Supplier">%s</xliff:g>, </string>
+    <string name="order_text">I would like to order <xliff:g id="quantity" example="5">%d</xliff:g> of <xliff:g id="product" example="Product">%s</xliff:g> from <xliff:g id="brand" example="Brand">%s</xliff:g>. </string>
+    <string name="order_thanks">Thanks</string>
+
+    <string name="editor_missing_name">Name field must be filled in</string>
+    <string name="editor_missing_brand">Brand field must be filled in</string>
+    <string name="editor_missing_supplier">Supplier field must be filled in</string>
+    <string name="editor_missing_email">E-mail field must be filled in</string>
+    <string name="editor_missing_price">Price field must be filled in</string>
+    <string name="editor_missing_picture">A picture must be selected</string>
+
+    <string name="editor_insert_product_successful">Product saved</string>
+    <string name="editor_insert_product_failed">Error with saving product</string>
+    <string name="editor_update_product_successful">Product updated</string>
+    <string name="editor_update_product_failed">Error with updating product</string>
+    <string name="editor_quantity_0">Quantity should be non-negative</string>
+
+    <string name="empty_view_title_text">No product</string>
+    <string name="empty_view_subtitle_text">Get started by adding a product</string>
+
+    <string name="add_product">Add a Product</string>
+    <string name="edit_product">Edit Product</string>
+
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+
+    <string name="editor_delete_product_successful">Product deleted</string>
+    <string name="editor_delete_product_failed">Error with deleting product</string>
+
+    <string name="delete_dialog_msg">Delete this product?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+</resources>
