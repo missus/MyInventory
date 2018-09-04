@@ -1,3 +1,8 @@
+/*
+ * Created by Karolin Fornet.
+ * Copyright (c) 2017.  All rights reserved.
+ */
+
 package com.example.android.myinventory.data;
 
 import android.content.ContentProvider;
@@ -13,14 +18,10 @@ import com.example.android.myinventory.data.ProductContract.ProductEntry;
 
 public class ProductProvider extends ContentProvider {
 
-    public static final String LOG_TAG = ProductProvider.class.getSimpleName();
-
+    private static final String LOG_TAG = ProductProvider.class.getSimpleName();
     private ProductDbHelper mDbHelper;
-
-    public static final int PRODUCTS = 100;
-
-    public static final int PRODUCT_ID = 101;
-
+    private static final int PRODUCTS = 100;
+    private static final int PRODUCT_ID = 101;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
@@ -163,7 +164,7 @@ public class ProductProvider extends ContentProvider {
         if (rowsDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-       return rowsDeleted;
+        return rowsDeleted;
     }
 
     @Override

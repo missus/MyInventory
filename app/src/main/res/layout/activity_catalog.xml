@@ -8,7 +8,8 @@
     <ListView
         android:id="@+id/list_view_product"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_item" />
 
     <RelativeLayout
         android:id="@+id/empty_view"
@@ -18,10 +19,11 @@
 
         <ImageView
             android:id="@+id/empty_image"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_sad"/>
+            android:src="@drawable/ic_sad"
+            tools:ignore="contentDescription" />
 
         <TextView
             android:id="@+id/empty_title_text"
@@ -30,9 +32,9 @@
             android:layout_below="@+id/empty_image"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-medium"
-            android:paddingTop="16dp"
+            android:paddingTop="@dimen/activity_margin"
             android:text="@string/empty_view_title_text"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            android:textAppearance="?android:textAppearanceMedium" />
 
         <TextView
             android:id="@+id/empty_subtitle_text"
@@ -40,11 +42,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/empty_title_text"
             android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif"
-            android:paddingTop="8dp"
+            android:paddingTop="@dimen/padding"
             android:text="@string/empty_view_subtitle_text"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="#A2AAB0"/>
+            style="@style/SmallTextStyle" />
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -52,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_add" />

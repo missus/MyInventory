@@ -1,3 +1,8 @@
+/*
+ * Created by Karolin Fornet.
+ * Copyright (c) 2017.  All rights reserved.
+ */
+
 package com.example.android.myinventory.data;
 
 import android.content.ContentResolver;
@@ -7,7 +12,7 @@ import android.provider.BaseColumns;
 public final class ProductContract {
 
     public static final String CONTENT_AUTHORITY = "com.example.android.myinventory";
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final String PATH_PRODUCTS = "products";
 
     public static abstract class ProductEntry implements BaseColumns {

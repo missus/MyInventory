@@ -1,8 +1,12 @@
+/*
+ * Created by Karolin Fornet.
+ * Copyright (c) 2017.  All rights reserved.
+ */
+
 package com.example.android.myinventory;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -17,24 +21,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.android.myinventory.data.ProductContract;
 import com.example.android.myinventory.data.ProductContract.ProductEntry;
 
-import static android.R.attr.id;
-import static com.example.android.myinventory.R.id.quantity;
-
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final int PRODUCT_LOADER = 0;
-    ProductCursorAdapter mCursorAdapter;
+    private ProductCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +42,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 startActivity(intent);
             }
         });
-        ListView listView = (ListView) findViewById(R.id.list_view_product);
+        ListView listView = findViewById(R.id.list_view_product);
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
         mCursorAdapter = new ProductCursorAdapter(this, null);
@@ -65,11 +65,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_catalog, menu);
         return true;
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 
     @Override

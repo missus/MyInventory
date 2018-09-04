@@ -9,6 +9,9 @@
     <string name="action_delete">Delete</string>
 
     <string name="editor_select_picture">Select Picture</string>
+    <string name="editor_add_picture">Add Picture</string>
+    <string name="editor_minus">-</string>
+    <string name="editor_plus">+</string>
 
     <string name="category_name">Name</string>
     <string name="category_brand">Brand</string>
@@ -28,6 +31,7 @@
 
     <string name="unit_product_price">$</string>
 
+    <string name="buy_now">Buy now</string>
     <string name="editor_order">Order</string>
     <string name="order_greeting">Dear <xliff:g id="supplier" example="Supplier">%s</xliff:g>, </string>
     <string name="order_text">I would like to order <xliff:g id="quantity" example="5">%d</xliff:g> of <xliff:g id="product" example="Product">%s</xliff:g> from <xliff:g id="brand" example="Brand">%s</xliff:g>. </string>

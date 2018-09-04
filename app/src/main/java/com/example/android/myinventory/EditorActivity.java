@@ -1,3 +1,8 @@
+/*
+ * Created by Karolin Fornet.
+ * Copyright (c) 2017.  All rights reserved.
+ */
+
 package com.example.android.myinventory;
 
 import android.Manifest;
@@ -14,6 +19,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
@@ -35,6 +41,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private static final int EXISTING_PRODUCT_LOADER = 0;
     private static final int PICK_IMAGE = 1;
+    private static final String IMAGE_URI = "uri";
 
     private Uri mCurrentProductUri;
     private EditText mNameEditText;
@@ -59,7 +66,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         Intent intent = getIntent();
         mCurrentProductUri = intent.getData();
-        mOrderButton = (Button) findViewById(R.id.order_button);
+        mOrderButton = findViewById(R.id.order_button);
         if (mCurrentProductUri == null) {
             setTitle(getString(R.string.add_product));
             mOrderButton.setVisibility(View.GONE);
@@ -69,16 +76,16 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mOrderButton.setVisibility(View.VISIBLE);
             getLoaderManager().initLoader(EXISTING_PRODUCT_LOADER, null, this);
         }
-        mNameEditText = (EditText) findViewById(R.id.edit_product_name);
-        mBrandEditText = (EditText) findViewById(R.id.edit_product_brand);
-        mSupplierEditText = (EditText) findViewById(R.id.edit_product_supplier);
-        mEmailEditText = (EditText) findViewById(R.id.edit_product_email);
-        mPriceEditText = (EditText) findViewById(R.id.edit_product_price);
-        mQuantityEditText = (EditText) findViewById(R.id.edit_product_quantity);
-        mDescriptionEditText = (EditText) findViewById(R.id.edit_product_description);
-        mMinusButton = (Button) findViewById(R.id.edit_quantity_minus);
-        mPlusButton = (Button) findViewById(R.id.edit_quantity_plus);
-        mImageView = (ImageView) findViewById(R.id.image);
+        mNameEditText = findViewById(R.id.edit_product_name);
+        mBrandEditText = findViewById(R.id.edit_product_brand);
+        mSupplierEditText = findViewById(R.id.edit_product_supplier);
+        mEmailEditText = findViewById(R.id.edit_product_email);
+        mPriceEditText = findViewById(R.id.edit_product_price);
+        mQuantityEditText = findViewById(R.id.edit_product_quantity);
+        mDescriptionEditText = findViewById(R.id.edit_product_description);
+        mMinusButton = findViewById(R.id.edit_quantity_minus);
+        mPlusButton = findViewById(R.id.edit_quantity_plus);
+        mImageView = findViewById(R.id.image);
 
         mNameEditText.setOnTouchListener(mTouchListener);
         mBrandEditText.setOnTouchListener(mTouchListener);
@@ -96,10 +103,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 trySelector();
             }
         });
-
+        if (savedInstanceState != null) {
+            mImageUri = savedInstanceState.getParcelable(IMAGE_URI);
+            mImageView.setImageURI(mImageUri);
+        }
     }
 
-    public void trySelector() {
+    private void trySelector() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PICK_IMAGE);
@@ -149,9 +159,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
     };
 
-
     private boolean saveProduct() {
-
         String nameString = mNameEditText.getText().toString().trim();
         String brandString = mBrandEditText.getText().toString().trim();
         String supplierString = mSupplierEditText.getText().toString().trim();
@@ -218,6 +226,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(IMAGE_URI, mImageUri);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_editor, menu);
         return true;
@@ -243,7 +257,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                // User clicked "Discard" button, navigate to parent activity.
                                 NavUtils.navigateUpFromSameTask(EditorActivity.this);
                             }
                         };
@@ -330,7 +343,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 }
             }
         });
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
@@ -341,7 +353,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             super.onBackPressed();
             return;
         }
-
         DialogInterface.OnClickListener discardButtonClickListener =
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -349,7 +360,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                         finish();
                     }
                 };
-
         showUnsavedChangesDialog(discardButtonClickListener);
     }
 
@@ -371,14 +381,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 deleteProduct();
             }
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-            }
-        });
-
+        builder.setNegativeButton(R.string.cancel, null);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
@@ -409,7 +412,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
     }
 
-    public void displayQuantity() {
+    private void displayQuantity() {
         mQuantityEditText.setText(String.valueOf(mQuantity));
     }
 

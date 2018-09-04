@@ -1,3 +1,8 @@
+/*
+ * Created by Karolin Fornet.
+ * Copyright (c) 2017.  All rights reserved.
+ */
+
 package com.example.android.myinventory.data;
 
 import android.content.Context;
@@ -8,8 +13,8 @@ import com.example.android.myinventory.data.ProductContract.ProductEntry;
 
 public class ProductDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Products.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Products.db";
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + ProductEntry.TABLE_NAME + " (" +

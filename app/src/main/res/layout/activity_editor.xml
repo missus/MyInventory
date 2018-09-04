@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:adjustViewBounds="true"
         android:background="@color/colorPrimary"
+        android:contentDescription="@string/editor_add_picture"
         android:src="@drawable/ic_add_photo" />
 
     <ScrollView
@@ -103,7 +105,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:paddingLeft="4dp">
+                    android:paddingLeft="@dimen/padding_small"
+                    android:paddingStart="@dimen/padding_small">
 
                     <EditText
                         android:id="@+id/edit_product_price"
@@ -140,21 +143,19 @@
 
                     <Button
                         android:id="@+id/edit_quantity_minus"
-                        android:layout_width="32dp"
-                        android:layout_height="40dp"
-                        android:backgroundTint="@color/colorPrimary"
+                        style="@style/ButtonSytle"
+                        android:layout_width="@dimen/small_button_width"
+                        android:layout_height="@dimen/small_button_hight"
                         android:onClick="decrement"
-                        android:text="-"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/editor_minus" />
 
                     <Button
                         android:id="@+id/edit_quantity_plus"
-                        android:layout_width="32dp"
-                        android:layout_height="40dp"
-                        android:backgroundTint="@color/colorPrimary"
+                        style="@style/ButtonSytle"
+                        android:layout_width="@dimen/small_button_width"
+                        android:layout_height="@dimen/small_button_hight"
                         android:onClick="increment"
-                        android:text="+"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/editor_plus" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -178,10 +179,9 @@
 
     <Button
         android:id="@+id/order_button"
+        style="@style/ButtonSytle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="order"
-        android:text="@string/editor_order"
-        android:textColor="@android:color/white" />
+        android:text="@string/editor_order" />
 </LinearLayout>

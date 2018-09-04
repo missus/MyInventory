@@ -1,5 +1,10 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="activity_margin">16dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="small_button_width">32dp</dimen>
+    <dimen name="small_button_hight">40dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="image_size">240dp</dimen>
 </resources>
 
